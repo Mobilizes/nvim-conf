@@ -38,3 +38,11 @@ mason_lspconfig.setup_handlers({
     })
   end,
 })
+
+require("diffview").setup({
+  file_panel = {
+    win_config = {
+      position = "right",
+    },
+  },
+})
