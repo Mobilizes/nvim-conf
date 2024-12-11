@@ -30,6 +30,15 @@ mason_lspconfig.setup({
   },
 })
 
+lspconfig["clangd"].setup({
+  offsetEncoding = { "utf-16" },
+  textDocument = {
+    completion = {
+      editsNearCursor = true,
+    },
+  },
+})
+
 mason_lspconfig.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
@@ -85,6 +94,41 @@ require("telescope").setup({
         "--glob=!**/yarn.lock",
         "--glob=!**/package-lock.json",
       },
+      live_grep = {
+        additional_args = function(opts)
+          return { "--hidden" }
+        end,
+      },
+    },
+  },
+  extensions = {
+    file_browser = {
+      hidden = { file_browser = true, folder_browser = true },
     },
   },
 })
+
+local Snacks = require("snacks")
+local copilot_exists = pcall(require, "copilot")
+
+if copilot_exists then
+  Snacks.toggle({
+    name = "Copilot Completion",
+    color = {
+      enabled = "azure",
+      disabled = "orange",
+    },
+    get = function()
+      return not require("copilot.client").is_disabled()
+    end,
+    set = function(state)
+      if state then
+        require("copilot.command").enable()
+      else
+        require("copilot.command").disable()
+      end
+    end,
+  }):map("<leader>at")
+
+  require("copilot.command").disable()
+end
