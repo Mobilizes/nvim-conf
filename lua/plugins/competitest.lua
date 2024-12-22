@@ -31,14 +31,22 @@ return {
       ":CompetiTest delete_testcase<cr>",
       desc = "Delete testcase",
     },
+    {
+      "<leader>ps",
+      ":CompetiTest show_ui",
+      desc = "Show runner ui",
+    },
   },
   desc = "CompetiTest",
   config = function()
     require("competitest").setup({
       evaluate_template_modifiers = true,
-      compile_command = { cpp = { exec = "g++", args = { "-Wall", "$(FNAME)", "-o", "$(HOME)/cpgrind/x" } } },
-      run_command = { cpp = { exec = "./x" } },
-      running_directory = "executables/",
+      compile_command = {
+        cpp = { exec = "g++", args = { "-Wall", "$(FABSPATH)", "-o", "$(FNOEXT)" } },
+      },
+      run_command = { cpp = { exec = "./$(FNOEXT)" } },
+      compile_directory = "../../executables/",
+      running_directory = "../../executables/",
       testcases_directory = "testcases/",
       template_file = "/home/mob/cpgrind/templates/cp_template.cpp",
       received_problems_path = function(task, file_extension)
