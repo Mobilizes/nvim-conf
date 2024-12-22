@@ -82,18 +82,7 @@ require("telescope").setup({
   pickers = {
     find_files = {
       hidden = true,
-      find_command = {
-        "rg",
-        "--files",
-        "--hidden",
-        "--glob=!**/.git/*",
-        "--glob=!**/.idea/*",
-        "--glob=!**/.vscode/*",
-        "--glob=!**/build/*",
-        "--glob=!**/dist/*",
-        "--glob=!**/yarn.lock",
-        "--glob=!**/package-lock.json",
-      },
+      no_ignore = true,
       live_grep = {
         additional_args = function(opts)
           return { "--hidden" }
