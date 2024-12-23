@@ -33,7 +33,7 @@ return {
     },
     {
       "<leader>ps",
-      ":CompetiTest show_ui",
+      ":CompetiTest show_ui<cr>",
       desc = "Show runner ui",
     },
   },

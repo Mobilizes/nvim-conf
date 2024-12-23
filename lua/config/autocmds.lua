@@ -101,6 +101,12 @@ local Snacks = require("snacks")
 local copilot_exists = pcall(require, "copilot")
 
 if copilot_exists then
+  -- Snacks.toggle({
+  --   name = "Copilot Completion",
+  --   notify = false,
+  --   require("copilot.command").disable(),
+  -- })
+
   Snacks.toggle({
     name = "Copilot Completion",
     color = {
