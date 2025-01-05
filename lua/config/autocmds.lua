@@ -23,21 +23,21 @@ vim.api.nvim_create_autocmd("UILeave", {
 local lspconfig = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
 
-mason_lspconfig.setup({
-  ensure_installed = {
-    "clangd",
-    "bashls",
-  },
-})
-
-lspconfig["clangd"].setup({
-  offsetEncoding = { "utf-16" },
-  textDocument = {
-    completion = {
-      editsNearCursor = true,
-    },
-  },
-})
+-- mason_lspconfig.setup({
+--   ensure_installed = {
+--     "clangd",
+--     "bashls",
+--   },
+-- })
+--
+-- lspconfig["clangd"].setup({
+--   offsetEncoding = { "utf-16" },
+--   textDocument = {
+--     completion = {
+--       editsNearCursor = true,
+--     },
+--   },
+-- })
 
 mason_lspconfig.setup_handlers({
   function(server_name)
@@ -82,7 +82,7 @@ require("telescope").setup({
   pickers = {
     find_files = {
       hidden = true,
-      no_ignore = true,
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
       live_grep = {
         additional_args = function(opts)
           return { "--hidden" }

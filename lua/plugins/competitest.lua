@@ -43,12 +43,19 @@ return {
       evaluate_template_modifiers = true,
       compile_command = {
         cpp = { exec = "g++", args = { "-Wall", "$(FABSPATH)", "-o", "$(FNOEXT)" } },
+        rust = { exec = "rustc", args = { "$(FABSPATH)" } },
       },
-      run_command = { cpp = { exec = "./$(FNOEXT)" } },
+      run_command = {
+        cpp = { exec = "./$(FNOEXT)" },
+        rust = { exec = "./$(FNOEXT)" },
+      },
       compile_directory = "../../executables/",
       running_directory = "../../executables/",
       testcases_directory = "testcases/",
-      template_file = "/home/mob/cpgrind/templates/cp_template.cpp",
+      template_file = {
+        cpp = "/home/mob/mob-env/templates/cp_template.cpp",
+        rs = "/home/mob/mob-env/templates/cp_template.rs",
+      },
       received_problems_path = function(task, file_extension)
         local hyphen = string.find(task.group, " - ")
         local judge, contest, name
