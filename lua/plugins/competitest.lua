@@ -66,9 +66,14 @@ return {
           judge = string.sub(task.group, 1, hyphen - 1)
           contest = string.sub(task.group, hyphen + 3)
         end
-        name = string.sub(task.name, 1, 1)
-        if tonumber(string.sub(task.name, 2, 2)) ~= nil then
-          name = string.sub(task.name, 1, 2)
+        if judge == "CSES" then
+          name = task.name
+          return string.format("%s/%s/%s.%s", vim.loop.cwd(), judge, name, file_extension)
+        elseif judge == "Codeforces" then
+          name = string.sub(task.name, 1, 1)
+          if tonumber(string.sub(task.name, 2, 2)) ~= nil then
+            name = string.sub(task.name, 1, 2)
+          end
         end
         -- judge = judge:gsub("#", "")
         -- judge = judge:gsub(" ", "_")
