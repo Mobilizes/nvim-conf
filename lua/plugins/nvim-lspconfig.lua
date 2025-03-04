@@ -22,6 +22,11 @@ return {
                 ":ClangdSwitchSourceHeader<cr>",
                 desc = "Toggle Source/Header",
               },
+              {
+                "<leader>cI",
+                ":ClangdShowSymbolInfo",
+                desc = "Show Symbol Info",
+              },
             },
           },
         },
