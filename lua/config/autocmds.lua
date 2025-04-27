@@ -129,3 +129,15 @@ if copilot_exists then
 end
 
 require("remote-sshfs").setup({})
+require("adoc_pdf_live").setup()
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "php", "blade" },
+  callback = function()
+    vim.lsp.start({
+      name = "laravel-ls",
+      cmd = { vim.fn.exepath("/home/mob/go/bin/laravel-ls") },
+      root_dir = vim.fn.getcwd(),
+    })
+  end,
+})

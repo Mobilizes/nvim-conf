@@ -4,6 +4,7 @@ return {
     notify_on_error = true,
     formatter_by_ft = {
       c = { "clang_format" },
+      php = { { "pint" } },
     },
     formatters = {
       clang_format = {

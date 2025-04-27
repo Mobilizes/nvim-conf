@@ -17,15 +17,16 @@ return {
               "--enable-config",
             },
             keys = {
-              {
-                "<leader>ch",
-                ":ClangdSwitchSourceHeader<cr>",
-                desc = "Toggle Source/Header",
-              },
-              {
-                "<leader>cI",
-                ":ClangdShowSymbolInfo",
-                desc = "Show Symbol Info",
+              { "<leader>ch", ":ClangdSwitchSourceHeader<cr>", desc = "Toggle Source/Header" },
+              { "<leader>cI", ":ClangdShowSymbolInfo", desc = "Show Symbol Info" },
+            },
+          },
+          intelephense = {
+            settings = {
+              intelephense = {
+                diagnostics = {
+                  enable = false,
+                },
               },
             },
           },
