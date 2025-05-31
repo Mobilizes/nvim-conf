@@ -15,6 +15,7 @@ return {
               "--function-arg-placeholders",
               "--fallback-style=google",
               "--enable-config",
+              "--header-insertion=never",
             },
             keys = {
               { "<leader>ch", ":ClangdSwitchSourceHeader<cr>", desc = "Toggle Source/Header" },

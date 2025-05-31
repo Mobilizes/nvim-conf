@@ -140,8 +140,3 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
-
-local keys = require("lazyvim.plugins.extras.editor.snacks_picker")
-vim.list_extend(keys, {
-  { "<leader><space>", ":FzfLua files resume=true<cr>", desc = "Find Files (cwd dir)" },
-})
